@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <style>
+        :root {
+            --bg: #eef4fb;
+            --card: #ffffff;
+            --ink: #1c2b3a;
+            --muted: #5d7186;
+            --accent: #1a73e8;
+            --border: #dbe6f2;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+        }
+        .wrap { max-width: 860px; margin: 0 auto; padding: 24px 16px 48px; }
+        header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+        h1 { margin: 0 0 4px; font-size: 1.6rem; }
+        .subtitle { color: var(--muted); font-size: 0.85rem; margin: 0 0 20px; }
+        .subtitle a { color: var(--accent); text-decoration: none; }
+        nav a { color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+
+        form.search { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        form.search input[type="text"] {
+            flex: 1; min-width: 200px; padding: 10px 14px;
+            border: 1px solid var(--border); border-radius: 10px; font-size: 1rem;
+        }
+        form.search button {
+            padding: 10px 20px; border: none; border-radius: 10px;
+            background: var(--accent); color: #fff; font-size: 1rem; cursor: pointer;
+        }
+        form.search select {
+            padding: 10px; border: 1px solid var(--border); border-radius: 10px;
+            background: var(--card); font-size: 0.95rem;
+        }
+
+        .notice {
+            background: #fff7e0; border: 1px solid #f0dfa8; border-radius: 10px;
+            padding: 14px 16px; margin-bottom: 20px; font-size: 0.95rem;
+        }
+        .notice code { background: #f4ecd2; padding: 1px 5px; border-radius: 4px; }
+        .error { background: #fdecea; border-color: #f5c6c1; }
+
+        .card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 18px; margin-bottom: 18px;
+        }
+        .current { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+        .current img { width: 72px; height: 72px; }
+        .current .temp { font-size: 3rem; font-weight: 600; line-height: 1; }
+        .current .desc { color: var(--muted); margin-top: 4px; }
+        .stats {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px; margin-top: 16px; width: 100%;
+        }
+        .stat { background: var(--bg); border-radius: 10px; padding: 10px 12px; }
+        .stat .label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+        .stat .value { font-size: 1.05rem; font-weight: 600; margin-top: 2px; }
+
+        h2 { font-size: 1.05rem; margin: 0 0 12px; }
+        .hourly-strip { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; }
+        .hour {
+            min-width: 76px; text-align: center; background: var(--bg);
+            border-radius: 10px; padding: 10px 6px; flex-shrink: 0;
+        }
+        .hour img { width: 32px; height: 32px; }
+        .hour .t { font-weight: 600; }
+        .hour .label, .hour .p { font-size: 0.75rem; color: var(--muted); }
+
+        table.daily { width: 100%; border-collapse: collapse; }
+        table.daily td { padding: 9px 8px; border-top: 1px solid var(--border); vertical-align: middle; }
+        table.daily tr:first-child td { border-top: none; }
+        table.daily img { width: 32px; height: 32px; display: block; }
+        .dayname { font-weight: 600; white-space: nowrap; }
+        .datelabel, .cond, .suntimes { color: var(--muted); font-size: 0.85rem; }
+        .hi { font-weight: 600; }
+        .lo { color: var(--muted); }
+        .precip { color: var(--accent); font-size: 0.85rem; white-space: nowrap; }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <div>
+            <h1>Weather</h1>
+            <p class="subtitle">Forecasts from the
+                <a href="https://developers.google.com/maps/documentation/weather" target="_blank" rel="noopener">Google Weather API</a>,
+                powered by <a href="https://developers.google.com/weathernext/guides/models" target="_blank" rel="noopener">WeatherNext</a> models.</p>
+        </div>
+        <nav><a href="/">← To-Do list</a></nav>
+    </header>
+
+    <form class="search" action="/weather" method="GET">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search a city, address, or place…" autofocus>
+        <select name="units">
+            <option value="METRIC" {% if units == 'METRIC' %}selected{% endif %}>°C</option>
+            <option value="IMPERIAL" {% if units == 'IMPERIAL' %}selected{% endif %}>°F</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if api_key_missing %}
+        <div class="notice">
+            <strong>No API key configured.</strong>
+            Set the <code>GOOGLE_MAPS_API_KEY</code> environment variable to a Google Cloud
+            API key with the <em>Weather API</em> and <em>Geocoding API</em> enabled, then restart the app.
+            See the README for setup steps.
+        </div>
+    {% elif error %}
+        <div class="notice error">{{ error }}</div>
+    {% endif %}
+
+    {% if current %}
+        <div class="card">
+            <h2>Now in {{ place }}</h2>
+            <div class="current">
+                {% if current.icon %}<img src="{{ current.icon }}" alt="{{ current.text }}">{% endif %}
+                <div>
+                    <div class="temp">{{ current.temp }}{{ deg_unit }}</div>
+                    <div class="desc">{{ current.text }}
+                        {% if current.feels_like is not none %}· feels like {{ current.feels_like }}{{ deg_unit }}{% endif %}
+                    </div>
+                </div>
+                <div class="stats">
+                    {% if current.humidity is not none %}
+                        <div class="stat"><div class="label">Humidity</div><div class="value">{{ current.humidity }}%</div></div>
+                    {% endif %}
+                    {% if current.wind_speed is not none %}
+                        <div class="stat"><div class="label">Wind</div><div class="value">{{ current.wind_speed }} {{ current.wind_unit }} {{ current.wind_dir }}</div></div>
+                    {% endif %}
+                    {% if current.precip_percent is not none %}
+                        <div class="stat"><div class="label">Precipitation</div><div class="value">{{ current.precip_percent }}%</div></div>
+                    {% endif %}
+                    {% if current.uv_index is not none %}
+                        <div class="stat"><div class="label">UV index</div><div class="value">{{ current.uv_index }}</div></div>
+                    {% endif %}
+                    {% if current.cloud_cover is not none %}
+                        <div class="stat"><div class="label">Cloud cover</div><div class="value">{{ current.cloud_cover }}%</div></div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if hourly %}
+        <div class="card">
+            <h2>Next 24 hours</h2>
+            <div class="hourly-strip">
+                {% for hour in hourly %}
+                    <div class="hour">
+                        <div class="label">{{ hour.label }}</div>
+                        {% if hour.icon %}<img src="{{ hour.icon }}" alt="{{ hour.text }}">{% endif %}
+                        <div class="t">{{ hour.temp }}°</div>
+                        {% if hour.precip_percent is not none %}<div class="p">💧{{ hour.precip_percent }}%</div>{% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if daily %}
+        <div class="card">
+            <h2>10-day forecast</h2>
+            <table class="daily">
+                {% for day in daily %}
+                    <tr>
+                        <td class="dayname">{{ day.day_name }}</td>
+                        <td class="datelabel">{{ day.date_label }}</td>
+                        <td>{% if day.icon %}<img src="{{ day.icon }}" alt="{{ day.text }}">{% endif %}</td>
+                        <td class="cond">{{ day.text }}</td>
+                        <td class="precip">{% if day.precip_percent is not none %}💧{{ day.precip_percent }}%{% endif %}</td>
+                        <td><span class="hi">{{ day.max }}°</span> / <span class="lo">{{ day.min }}°</span></td>
+                        <td class="suntimes">{% if day.sunrise %}🌅 {{ day.sunrise }} · 🌇 {{ day.sunset }}{% endif %}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+
+    {% if not query and not api_key_missing %}
+        <div class="card" style="text-align:center; color: var(--muted);">
+            Search for a place above to see current conditions, an hourly strip, and a 10-day forecast.
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>

@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
+from weather import weather_bp
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
 db = SQLAlchemy(app)
+app.register_blueprint(weather_bp)
 
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
