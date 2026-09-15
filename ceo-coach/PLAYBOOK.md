@@ -19,6 +19,7 @@ maximally direct coaching email grounded in real data from the prior week.
 | Gmail | Prior week inbox + sent | High-stakes threads (investor, top customers, exec search); unanswered items directed at the CEO; deadlines approaching; renewal wins/losses from notifications |
 | Slack | Prior week messages + key channels | Where CEO energy went (firefighting vs strategy vs cheerleading); open owner-less issues; decisions bottlenecked on the CEO |
 | HubSpot | Deals: open this quarter, created last 7/30 days, closed-won/lost last 7 days | Pipeline coverage vs quarter target; new-pipeline creation rate; largest deals moved/stalled; win/loss vs named competitors |
+| Salesforce (when connected) | Same deal views as HubSpot, plus rep-level quota attainment and account contacts | Prefer Salesforce as system of record when both are available; cross-check HubSpot placeholder/duplicate deals against it |
 
 ## The commitment ledger (persistent memory)
 
@@ -39,8 +40,18 @@ Subject: `CEO Coach — Week of <date>: <one-line theme>`
 4. **Commitment ledger** — slipped twice (red), aging (yellow), closed (one line). Names and dates.
 5. **Pipeline & retention pulse** — HubSpot numbers vs coverage benchmark; churn-risk accounts
    with recommended CEO action (call / delegate / ignore).
-6. **Three orders for the week** — specific, dated, each tied to a growth lever. Not suggestions.
-7. **What you did right** — max two lines. Earned, not padded.
+6. **Weekly customer target list** — five named accounts for CEO outreach this week, sourced from
+   HubSpot + Granola + email/Slack signals. Mix (flex by week): ~2 decliner/dormant accounts,
+   1 late-stage deal >$150K needing a staged CEO appearance, 1 top-account exec sponsorship or
+   escalation touch, 1 win/loss or new-in-role-buyer call. Each entry: account, named contact
+   (title), why now (one line, cited), and the specific ask/opening line. Exclude accounts already
+   handled by the CEO that week. Reach-out beats attend: these are calls Bryan initiates.
+7. **CEO touch count** — actual customer/prospect touches completed last week (from Calendar +
+   Granola + sent email) vs the 5/week benchmark, plus last week's target-list hit rate
+   (how many of the 5 got touched). Trend it week over week. Roadshow/event days count as
+   1 touch each, not 5 — the habit is what's measured.
+8. **Three orders for the week** — specific, dated, each tied to a growth lever. Not suggestions.
+9. **What you did right** — max two lines. Earned, not padded.
 
 Rules:
 - Every claim cites its source (meeting name + date, thread subject, deal name).
