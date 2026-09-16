@@ -69,6 +69,28 @@ Rules:
 - If a data source fails, say so in the report; never fabricate numbers.
 - Maximum length: readable in 5 minutes.
 
+## Weekly outreach drafts (staged, never sent)
+
+After the Monday report is emailed, stage Gmail DRAFTS (create_draft — never send_message)
+for the week's outreach: the 1-2 prospect slots on the target list and the best 1-2
+new-in-seat alerts. Verify each contact's email first (HubSpot, then a single Apollo
+enrichment if missing; verified status only). Skip anyone emailed by the CEO in the last
+60 days (check Sent) and anyone in an active sales cycle unless the note is staged with
+the AE's deal context.
+
+CEO email voice — follow exactly:
+- Greeting format: "Hi [First], Bryan Murphy, CEO of Smartling here, [opening tied to them]."
+- NO em dashes anywhere. Short sentences, plain words, mobile cadence, under ~120 words.
+- One specific reason tied to the recipient in the first line; one easy ask; no marketing language,
+  no links, no images.
+- Standard proof point, phrased this way: "we were able to cut turnaround time by 8x, reduce cost
+  by 50% and improve quality using AI Translation" (with OpenAI and Zoom as the named references).
+- Displacement notes may add: NYC.gov's 3-year move off TransPerfect, Forrester Leader,
+  and a personal commitment (exec sponsorship / first-90-days).
+- New-in-seat notes are congratulations first, no pitch, ask only to be "one of your calls."
+- Sign-off: "Bryan" alone.
+The report's target-list section notes which drafts were staged so the CEO can send from his phone.
+
 ## Standing coaching lenses (from BENCHMARKS.md)
 
 - Calendar drift = company drift; audit against the composite allocation every week.
