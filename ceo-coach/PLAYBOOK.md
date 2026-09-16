@@ -47,9 +47,18 @@ Subject: `CEO Coach — Week of <date>: <one-line theme>`
    (title), why now (one line, cited), and the specific ask/opening line. Exclude accounts already
    handled by the CEO that week. Reach-out beats attend: these are calls Bryan initiates.
 7. **CEO touch count** — actual customer/prospect touches completed last week (from Calendar +
-   Granola + sent email) vs the 5/week benchmark, plus last week's target-list hit rate
-   (how many of the 5 got touched). Trend it week over week. Roadshow/event days count as
-   1 touch each, not 5 — the habit is what's measured.
+   Granola + sent email) vs the 5/week benchmark, split into customer touches vs prospect
+   touches, plus last week's target-list hit rate (how many of the 5 got touched). Trend it
+   week over week. Roadshow/event days count as 1 touch each, not 5 — the habit is what's measured.
+7a. **CEO prospecting block** — inside the weekly target list, at least 1-2 slots go to net-new
+   prospects, drawn from: (a) the standing top-25 LSP-displacement list (largest legacy-LSP
+   customers, named budget owner — CMO/CDO/VP Digital, never the loc manager; refresh the list
+   monthly from HubSpot/Apollo, remove converted or engaged-by-sales accounts), and (b) up to 3
+   new-in-seat executive alerts per week from Apollo job-change signals (new CMO/CDO/VP Digital
+   at target accounts, or new localization leaders anywhere enterprise — the strongest switch
+   trigger per the Nimdzi study). Each alert: name, title, company, start signal, and a one-line
+   CEO welcome-note angle. Minimize Apollo credit spend (search only, no bulk enrichment) and
+   surface any credit usage in the report.
 8. **Three orders for the week** — specific, dated, each tied to a growth lever. Not suggestions.
 9. **What you did right** — max two lines. Earned, not padded.
 
