@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+gunicorn
+anthropic
+google-api-python-client
+google-auth
+pytest

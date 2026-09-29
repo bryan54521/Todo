@@ -1,0 +1,11 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Pending requests</title>
+<style>body{font:16px system-ui;max-width:800px;margin:2rem auto;padding:0 1rem}li{margin:1rem 0}</style></head><body>
+<h1>Pending meeting requests</h1>
+{% if not rows %}<p>Nothing pending.</p>{% endif %}
+<ul>{% for r in rows %}<li>
+<b>{{ r.name }}</b> &lt;{{ r.email }}&gt; &middot; {{ r.duration }} min &middot; {{ r.start.strftime('%a %b %d %H:%M') }}<br>
+Topic: {{ r.topic }}
+<form method="post" action="/admin/{{ r.id }}/approve" style="display:inline"><input type="hidden" name="token" value="{{ token }}"><button>Approve</button></form>
+<form method="post" action="/admin/{{ r.id }}/decline" style="display:inline"><input type="hidden" name="token" value="{{ token }}"><button>Decline</button></form>
+</li>{% endfor %}</ul></body></html>

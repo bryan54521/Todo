@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book time with {{ owner }}</title>
+<style>
+body{font:16px system-ui;max-width:640px;margin:2rem auto;padding:0 1rem}
+#log{border:1px solid #ccc;border-radius:8px;padding:1rem;height:55vh;overflow:auto}
+.u{text-align:right;color:#0a58ca}.a{margin:.5rem 0;white-space:pre-wrap}
+form{display:flex;gap:.5rem;margin-top:1rem}input{flex:1;padding:.6rem}button{padding:.6rem 1rem}
+</style></head><body>
+<h1>Request a meeting with {{ owner }}</h1>
+<div id="log"><div class="a">Hi! Tell me what you'd like to meet about and I'll find a time. Requests are sent for approval before anything is confirmed.</div></div>
+<form id="f"><input id="m" maxlength="1000" autocomplete="off" placeholder="Type a message" required><button>Send</button></form>
+<script>
+const log=document.getElementById('log'),msgs=[];
+function add(c,t){const d=document.createElement('div');d.className=c;d.textContent=t;log.append(d);log.scrollTop=log.scrollHeight}
+document.getElementById('f').onsubmit=async e=>{e.preventDefault();
+ const i=document.getElementById('m'),t=i.value;i.value='';add('u',t);msgs.push({role:'user',content:t});
+ try{const r=await fetch('/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:msgs})});
+ const j=await r.json();const reply=j.reply||j.error;add('a',reply);if(j.reply)msgs.push({role:'assistant',content:reply});else msgs.pop();}
+ catch{add('a','Network error.');msgs.pop()}};
+</script></body></html>
