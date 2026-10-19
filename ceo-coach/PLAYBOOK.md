@@ -21,6 +21,20 @@ maximally direct coaching email grounded in real data from the prior week.
 | HubSpot | Deals: open this quarter, created last 7/30 days, closed-won/lost last 7 days | Pipeline coverage vs quarter target; new-pipeline creation rate; largest deals moved/stalled; win/loss vs named competitors |
 | Salesforce (when connected) | Same deal views as HubSpot, plus rep-level quota attainment and account contacts | Prefer Salesforce as system of record when both are available; cross-check HubSpot placeholder/duplicate deals against it |
 
+## Delivery reliability (non-negotiable)
+
+The report email IS the deliverable; data gathering is not. Session restarts have twice
+killed a run between data collection and the send, so every run follows send-first ordering:
+1. On wake, before launching data pulls, check the Gmail Sent folder for the most recent
+   "CEO Coach — Week of" email. If any prior Monday's edition is missing, send a recovery
+   edition FIRST from whatever data survives in context, flagging the gap honestly, before
+   doing anything else.
+2. After the week's data pulls return, write and send the email as the IMMEDIATE next
+   action — never interleave other work (commits, drafts, analysis) between the final
+   data pull and the send. Staged outreach drafts and repo commits come after the send.
+3. A run that ends without either a sent email or an explicit in-chat failure note is a
+   failed run; the next wake treats it as missing and recovers it.
+
 ## The commitment ledger (persistent memory)
 
 The coach maintains a running ledger of (a) commitments the CEO made and to whom,
