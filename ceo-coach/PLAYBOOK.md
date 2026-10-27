@@ -82,6 +82,9 @@ Subject: `CEO Coach — Week of <date>: <one-line theme>`
    renewal dates), each with the specific move and the AE who briefs first. Plays count toward
    the weekly touch benchmark and the CEO MBOs (CEO-attached bookings; new $1M+ accounts).
    Refresh the roster's owner/deal data monthly or when a play exposes stale CRM state.
+   The roster's "What I've done" column is the CEO's self-log: read it every Monday as the
+   primary record of play execution, cross-check against calendar/sent mail/Granola, and
+   note in the report any play marked done that has no corroborating evidence (or vice versa).
 8. **Three orders for the week** — specific, dated, each tied to a growth lever. Not suggestions.
 9. **What you did right** — max two lines. Earned, not padded.
 
