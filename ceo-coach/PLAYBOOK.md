@@ -73,6 +73,15 @@ Subject: `CEO Coach — Week of <date>: <one-line theme>`
    trigger per the Nimdzi study). Each alert: name, title, company, start signal, and a one-line
    CEO welcome-note angle. Minimize Apollo credit spend (search only, no bulk enrichment) and
    surface any credit usage in the report.
+7b. **CEO play scoreboard** — the Whale Program Roster doc
+   (https://claude.ai/artifact/6vaFjN8Nt3PB7HeuXSDWL3) carries a named "CEO play" per account
+   across current customers, consumption chases, takeouts, and whale tiers. Each Monday:
+   (a) grade last week's three named plays done / slipped, with evidence (calendar entry, sent
+   email, Granola meeting); slipped plays roll forward and lead the section; (b) name this
+   week's top three plays, ordered by nearest decision moment (close dates, eval windows,
+   renewal dates), each with the specific move and the AE who briefs first. Plays count toward
+   the weekly touch benchmark and the CEO MBOs (CEO-attached bookings; new $1M+ accounts).
+   Refresh the roster's owner/deal data monthly or when a play exposes stale CRM state.
 8. **Three orders for the week** — specific, dated, each tied to a growth lever. Not suggestions.
 9. **What you did right** — max two lines. Earned, not padded.
 
