@@ -34,6 +34,11 @@ killed a run between data collection and the send, so every run follows send-fir
    data pull and the send. Staged outreach drafts and repo commits come after the send.
 3. A run that ends without either a sent email or an explicit in-chat failure note is a
    failed run; the next wake treats it as missing and recovers it.
+4. AFTER the email is sent (never before): update the "CEO Coach Weekly" Claude Doc
+   (https://claude.ai/artifact/RtPwSzxyaxxrKLJos7izgP) in place with the same edition —
+   read it first (sinceRev) to pick up the CEO's edits and comments, answer any open
+   comments in their threads, then replace the sections. The email is the delivery of
+   record; the doc is the interactive copy where the CEO gives feedback.
 
 ## The commitment ledger (persistent memory)
 
