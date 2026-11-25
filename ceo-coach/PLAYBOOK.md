@@ -29,16 +29,20 @@ killed a run between data collection and the send, so every run follows send-fir
    "CEO Coach — Week of" email. If any prior Monday's edition is missing, send a recovery
    edition FIRST from whatever data survives in context, flagging the gap honestly, before
    doing anything else.
-2. After the week's data pulls return, write and send the email as the IMMEDIATE next
-   action — never interleave other work (commits, drafts, analysis) between the final
-   data pull and the send. Staged outreach drafts and repo commits come after the send.
-3. A run that ends without either a sent email or an explicit in-chat failure note is a
-   failed run; the next wake treats it as missing and recovers it.
-4. AFTER the email is sent (never before): update the "CEO Coach Weekly" Claude Doc
-   (https://claude.ai/artifact/RtPwSzxyaxxrKLJos7izgP) in place with the same edition —
-   read it first (sinceRev) to pick up the CEO's edits and comments, answer any open
-   comments in their threads, then replace the sections. The email is the delivery of
-   record; the doc is the interactive copy where the CEO gives feedback.
+2. After the week's data pulls return, deliver the edition as the IMMEDIATE next action —
+   never interleave other work (commits, drafts, analysis) between the final data pull and
+   delivery. Delivery order (changed after the Nov 23 failure, where the email send stalled
+   for two days on an unanswered Gmail approval prompt across container restarts):
+   a. FIRST write the full edition into the "CEO Coach Weekly" Claude Doc
+      (https://claude.ai/artifact/RtPwSzxyaxxrKLJos7izgP) — read it first (sinceRev) for
+      the CEO's edits/comments and answer open comments, then replace the sections. Doc
+      writes never require interactive approval, so the edition is durably delivered even
+      if everything after this step dies.
+   b. THEN send the email — the archive/delivery-of-record copy. If the send errors or
+      stalls on an approval prompt, the doc already carries the edition; the failsafe
+      retries the email and flags any lateness honestly in both places and in chat.
+3. A run that ends without either a delivered edition (doc or email) or an explicit
+   in-chat failure note is a failed run; the next wake treats it as missing and recovers it.
 
 ## The commitment ledger (persistent memory)
 
